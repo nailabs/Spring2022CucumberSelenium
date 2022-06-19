@@ -70,4 +70,4 @@ public class VehiclesPage extends AbstractPageBase {
         return driver.findElement(By.xpath(xpath)).getText().trim();
     }
 }
-//test
+//testing git
