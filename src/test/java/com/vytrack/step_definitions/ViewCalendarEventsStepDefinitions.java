@@ -3,7 +3,6 @@ package com.vytrack.step_definitions;
 import com.vytrack.pages.activities.CalendarEventsPage;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-
 import java.util.List;
 
 public class ViewCalendarEventsStepDefinitions {
