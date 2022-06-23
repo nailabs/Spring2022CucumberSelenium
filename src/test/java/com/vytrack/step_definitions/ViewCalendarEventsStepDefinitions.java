@@ -11,8 +11,7 @@ public class ViewCalendarEventsStepDefinitions {
 
     @Then("View Per Page menu should have following options")
     public void view_Per_Page_menu_should_have_following_options(List<String> dataTable) {
-        System.out.println("Expected list of object "+ dataTable);
+        System.out.println("Expected values: " + dataTable);
         Assert.assertEquals(dataTable, calendarEventsPage.getViewPerPageOptions());
     }
-
 }

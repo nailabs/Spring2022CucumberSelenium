@@ -39,6 +39,7 @@ public class LoginPage extends AbstractPageBase{
      */
     public void login(String usernameValue, String passwordValue) {
         username.sendKeys(usernameValue);
+        BrowserUtilities.wait(3);
         password.sendKeys(passwordValue, Keys.ENTER);
         BrowserUtilities.waitForPageToLoad(10);
         BrowserUtilities.wait(3);
@@ -68,6 +69,7 @@ public class LoginPage extends AbstractPageBase{
         }
         System.out.println("Login as "+role);
         login(userName,"UserUser123");
+        BrowserUtilities.wait(5);
 
     }
 }

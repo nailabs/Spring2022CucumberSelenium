@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.util.List;
 
 public class CalendarEventsPage extends AbstractPageBase {
@@ -39,24 +38,23 @@ public class CalendarEventsPage extends AbstractPageBase {
     @FindBy(id = "tinymce")
     private WebElement descriptionTextArea;
 
-    @FindBy(css = "[class='btn-group pull-right'] > button")
-    private WebElement saveAndClose;
 
-    @FindBy(name = "oro_calendar_event_form[title]")
+
+    @FindBy(xpath = "(//div[@class='control-label'])[1]")
     private WebElement generalInfoTitle;
 
     @FindBy(xpath = "//label[text()='Description']/following-sibling::div//div")
     private WebElement generalInfoDescription;
 
-    @FindBy(xpath = "[*contains(text(),'View per page:')]/following-sibling::*//a")
+    @FindBy(xpath = "//*[contains(text(),'View per page:')]/following-sibling::*//a")
     private List<WebElement> viewPerPageElements;
 
     @FindBy(css = "button[class*='btn dropdown-toggle']")
     private WebElement viewPerPageToggle;
 
-    public List<String> getViewPerPageOptions(){
+    public List<String> getViewPerPageOptions() {
         BrowserUtilities.waitForPageToLoad(20);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[title='Create Calendar Event']")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[title='Create Calendar event']")));
         viewPerPageToggle.click();
         BrowserUtilities.wait(2);
         return BrowserUtilities.getTextFromWebElements(viewPerPageElements);
@@ -65,6 +63,7 @@ public class CalendarEventsPage extends AbstractPageBase {
     public void enterCalendarEventTitle(String titleValue) {
         BrowserUtilities.waitForPageToLoad(20);
         wait.until(ExpectedConditions.visibilityOf(title)).sendKeys(titleValue);
+        wait.until(ExpectedConditions.attributeToBe(title, "value", titleValue));
     }
 
     public void enterCalendarEventDescription(String description) {
@@ -73,11 +72,6 @@ public class CalendarEventsPage extends AbstractPageBase {
         descriptionTextArea.sendKeys(description);
         wait.until(ExpectedConditions.textToBePresentInElement(descriptionTextArea, description));
         driver.switchTo().defaultContent();//exit from the frame
-    }
-
-    public void clickOnSaveAndClose() {
-        BrowserUtilities.wait(3);
-        wait.until(ExpectedConditions.elementToBeClickable(saveAndClose)).click();
     }
 
     public String getGeneralInfoTitleText() {
@@ -90,7 +84,6 @@ public class CalendarEventsPage extends AbstractPageBase {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[text()='Description']/following-sibling::div//div")));
         return generalInfoDescription.getText();
     }
-
 
     //#############################################################
     public List<String> getColumnNames() {

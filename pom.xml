@@ -21,10 +21,10 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.8.1</version>
+                        <version> 3.8.1</version>
                         <configuration>
-                            <source>12</source>
-                            <target>12</target>
+                            <source>8</source>
+                            <target>8</target>
                         </configuration>
                     </plugin>
                     <plugin>
@@ -96,11 +96,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M4</version>
                 <configuration>
-                    <parallel>classes</parallel>
-                    <threadCount>2</threadCount> <!--to run 2 browsers in parallel-->
-                    <perCoreThreadCount>false</perCoreThreadCount> <!--has to be false, otherwise 2 will be ignored-->
-                    <forkCount>2C</forkCount>
-
                     <!-- for parallel running Cucumber-->
                     <parallel>methods</parallel>
                     <useUnlimitedThreads>true</useUnlimitedThreads>
@@ -114,7 +109,7 @@
             <plugin>
                 <groupId>net.masterthought</groupId>
                 <artifactId>maven-cucumber-reporting</artifactId>
-                <version> 5.0.0</version>
+                <version>5.0.0</version>
                 <executions>
                     <execution>
                         <id>execution</id>
